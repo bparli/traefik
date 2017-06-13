@@ -30,6 +30,9 @@ func NewErrorPagesHandler(errorPage types.ErrorPage, backendURL string) (*ErrorP
 	var blocks [][2]int
 	for _, block := range errorPage.Status {
 		codes := strings.Split(block, "-")
+		if len(codes) == 2 {
+
+		}
 		lowCode, err := strconv.Atoi(codes[0])
 		if err != nil {
 			return nil, err
@@ -48,7 +51,7 @@ func NewErrorPagesHandler(errorPage types.ErrorPage, backendURL string) (*ErrorP
 }
 
 func (ep *ErrorPagesHandler) ServeHTTP(w http.ResponseWriter, req *http.Request, next http.HandlerFunc) {
-	recorder := NewRecorder()
+	recorder := newRetryResponseRecorder()
 	recorder.responseWriter = w
 	next.ServeHTTP(recorder, req)
 
