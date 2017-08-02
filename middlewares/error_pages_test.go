@@ -7,9 +7,15 @@ import (
 	"strconv"
 	"testing"
 
+<<<<<<< HEAD
 	"github.com/codegangsta/negroni"
 	"github.com/containous/traefik/types"
 	"github.com/stretchr/testify/assert"
+=======
+	"github.com/containous/traefik/types"
+	"github.com/stretchr/testify/assert"
+	"github.com/urfave/negroni"
+>>>>>>> upstream/master
 )
 
 func TestErrorPage(t *testing.T) {
